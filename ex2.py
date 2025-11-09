@@ -11,12 +11,12 @@ class Document:
         print(f"{self.titre} ({self.annee})")
 
     def est_recent(self):
-        """Retourne True si le document a moins de 5 ans."""
+      
         annee_actuelle = datetime.now().year
         return annee_actuelle - self.annee <= 5
 
     def to_dict(self):
-        """Convertit l'objet en dictionnaire pour la sérialisation JSON."""
+       
         return {
             "type": self.__class__.__name__,
             "titre": self.titre,
@@ -67,14 +67,14 @@ class Bibliotheque:
             doc.afficher()
 
     def rechercher(self, titre):
-        """Recherche un document par titre (insensible à la casse)."""
+       
         for doc in self.documents:
             if doc.titre.lower() == titre.lower():
                 return doc
         return None
 
     def sauvegarder_json(self, fichier):
-        """Sauvegarde la liste des documents dans un fichier JSON."""
+        
         data = [doc.to_dict() for doc in self.documents]
         with open(fichier, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
